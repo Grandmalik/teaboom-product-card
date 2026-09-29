@@ -33,16 +33,20 @@
   }
 
   &__footer {
-    // Узкий блок: цена над кнопкой, кнопка на всю ширину.
-    // Широкий: у кнопки своя колонка фиксированной ширины, поэтому длина цены её не сдвигает.
+    // Цена сверху, под ней счётчик и кнопка: ширина кнопки не зависит от длины цены.
     display: grid;
-    align-items: center;
-    gap: 16px 24px;
+    gap: 16px;
     padding-top: 20px;
     border-top: 1px solid var(--color-border);
+  }
 
-    @container purchase (min-width: 480px) {
-      grid-template-columns: minmax(0, 1fr) 240px;
-    }
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__submit {
+    flex: 1;
+    min-width: 0;
   }
 }

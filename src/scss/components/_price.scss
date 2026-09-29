@@ -1,8 +1,14 @@
+// Цена слева, цена за 100 г — компактным блоком справа.
 .price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
   &__row {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     gap: 4px 12px;
   }
 
@@ -21,18 +27,31 @@
     color: var(--color-text-subtle);
   }
 
-  &__note {
-    margin-top: 2px;
+  // Две строки не выше крупной цены, поэтому блок цены не меняет высоту.
+  &__unit {
+    display: grid;
+    flex-shrink: 0;
     font-size: 13px;
-    color: var(--color-text-muted);
+    line-height: 1.35;
+    text-align: right;
+    white-space: nowrap;
     transition:
       opacity var(--transition-base),
       visibility var(--transition-base);
 
-    // Скрыта, но место в раскладке сохраняется: блок цены не меняет высоту при смене фасовки.
+    // Скрыт, но место сохраняется: цена слева не сдвигается при смене фасовки.
     &.is-invisible {
       opacity: 0;
       visibility: hidden;
     }
+  }
+
+  &__unit-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__unit-label {
+    color: var(--color-text-muted);
   }
 }

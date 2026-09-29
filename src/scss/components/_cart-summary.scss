@@ -1,0 +1,90 @@
+@use '../abstracts' as *;
+
+// Блок «В корзине»: что и сколько добавлено из этой карточки.
+.cart-summary {
+  display: grid;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+
+  &__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  &__list {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 6px 6px 16px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-muted);
+
+    @include media-up('sm') {
+      gap: 12px;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &__sum {
+    min-width: 72px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: var(--color-text-subtle);
+    background: none;
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-sale);
+        background-color: var(--color-surface);
+      }
+    }
+  }
+
+  &__remove-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__total {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 16px;
+    font-weight: 600;
+  }
+
+  &__total-sum {
+    font-family: var(--font-accent);
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+  }
+}

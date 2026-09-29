@@ -1,0 +1,87 @@
+@use '../abstracts' as *;
+
+// Счётчик количества «− N +».
+.quantity {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  height: 52px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  transition: border-color var(--transition-fast);
+
+  &:focus-within {
+    border-color: var(--color-text);
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    color: var(--color-text);
+    background: none;
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    @media (hover: hover) {
+      &:hover:not([aria-disabled='true']) {
+        background-color: var(--color-surface-muted);
+      }
+    }
+
+    &[aria-disabled='true'] {
+      color: var(--color-border-strong);
+      cursor: default;
+    }
+
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__input {
+    width: 36px;
+    padding: 0;
+    border: 0;
+    font-size: 16px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    background: none;
+
+    // Фокус показывает рамка всего счётчика (:focus-within).
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  // Компактный вариант для строк списка.
+  &--sm {
+    height: 36px;
+  }
+
+  &--sm &__button {
+    width: 32px;
+  }
+
+  &--sm &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--sm &__input {
+    width: 30px;
+  }
+}

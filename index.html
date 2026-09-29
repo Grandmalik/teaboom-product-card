@@ -46,6 +46,12 @@
       <symbol id="icon-heart" viewBox="0 0 24 24">
         <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
       </symbol>
+      <symbol id="icon-minus" viewBox="0 0 24 24">
+        <path d="M5 12h14" />
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5v14" />
+      </symbol>
       <symbol id="icon-close" viewBox="0 0 24 24">
         <path d="M18 6 6 18M6 6l12 12" />
       </symbol>
@@ -157,6 +163,11 @@
                   <span class="variant-picker__card">
                     <span class="variant-picker__weight">100 г</span>
                     <span class="variant-picker__price">326,40 ₽</span>
+                    <span class="variant-picker__badge" data-variant-badge hidden>
+                      <span class="visually-hidden">В корзине:</span>
+                      <span data-variant-badge-count>0</span>
+                      <span class="visually-hidden">шт.</span>
+                    </span>
                   </span>
                 </label>
 
@@ -173,6 +184,11 @@
                   <span class="variant-picker__card">
                     <span class="variant-picker__weight">500 г</span>
                     <span class="variant-picker__price">1 432 ₽</span>
+                    <span class="variant-picker__badge" data-variant-badge hidden>
+                      <span class="visually-hidden">В корзине:</span>
+                      <span data-variant-badge-count>0</span>
+                      <span class="visually-hidden">шт.</span>
+                    </span>
                   </span>
                 </label>
 
@@ -189,6 +205,11 @@
                   <span class="variant-picker__card">
                     <span class="variant-picker__weight">1000 г</span>
                     <span class="variant-picker__price">2 064 ₽</span>
+                    <span class="variant-picker__badge" data-variant-badge hidden>
+                      <span class="visually-hidden">В корзине:</span>
+                      <span data-variant-badge-count>0</span>
+                      <span class="visually-hidden">шт.</span>
+                    </span>
                   </span>
                 </label>
 
@@ -205,6 +226,11 @@
                   <span class="variant-picker__card">
                     <span class="variant-picker__weight">5000 г</span>
                     <span class="variant-picker__price">6 320 ₽</span>
+                    <span class="variant-picker__badge" data-variant-badge hidden>
+                      <span class="visually-hidden">В корзине:</span>
+                      <span data-variant-badge-count>0</span>
+                      <span class="visually-hidden">шт.</span>
+                    </span>
                   </span>
                 </label>
               </div>
@@ -222,18 +248,83 @@
                     <s data-product-old-price>349,20 ₽</s>
                   </p>
                 </div>
-                <p class="price__note is-invisible" data-unit-price-only>
-                  <span data-product-unit-price>326,40 ₽</span> за 100 г
+                <p class="price__unit is-invisible" data-unit-price-only>
+                  <span class="price__unit-value" data-product-unit-price>326,40 ₽</span>
+                  <span class="price__unit-label">за 100 г</span>
                 </p>
               </div>
 
-              <button class="button button--primary" type="submit" data-add-to-cart>
-                <svg class="icon" aria-hidden="true" focusable="false">
-                  <use href="#icon-cart" data-add-to-cart-icon></use>
-                </svg>
-                <span data-add-to-cart-label>В корзину</span>
-              </button>
+              <div class="purchase__actions">
+                <div class="quantity" data-quantity>
+                  <button class="quantity__button" type="button" data-quantity-step="-1">
+                    <svg class="icon quantity__icon" aria-hidden="true" focusable="false"><use href="#icon-minus"></use></svg>
+                    <span class="visually-hidden">Меньше</span>
+                  </button>
+                  <input
+                    class="quantity__input"
+                    type="text"
+                    inputmode="numeric"
+                    value="1"
+                    aria-label="Количество, шт."
+                    data-quantity-input
+                    data-min="1"
+                    data-max="99"
+                  />
+                  <button class="quantity__button" type="button" data-quantity-step="1">
+                    <svg class="icon quantity__icon" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg>
+                    <span class="visually-hidden">Больше</span>
+                  </button>
+                </div>
+
+                <button class="button button--primary purchase__submit" type="submit" data-add-to-cart>
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-cart" data-add-to-cart-icon></use>
+                  </svg>
+                  <span data-add-to-cart-label>В корзину</span>
+                </button>
+              </div>
             </div>
+
+            <section class="cart-summary" aria-labelledby="cart-summary-title" data-cart-summary hidden>
+              <h2 class="cart-summary__title" id="cart-summary-title">В корзине</h2>
+              <ul class="cart-summary__list" data-cart-summary-list></ul>
+              <p class="cart-summary__total" aria-live="polite">
+                <span>Итого: <span data-cart-summary-count>0</span> шт.</span>
+                <span class="cart-summary__total-sum" data-cart-summary-sum>0 ₽</span>
+              </p>
+
+              <!-- Шаблон строки: заполняется из данных корзины в cart-summary.js -->
+              <template data-cart-summary-template>
+                <li class="cart-summary__item">
+                  <span class="cart-summary__name" data-item-name></span>
+                  <div class="quantity quantity--sm" data-quantity>
+                    <button class="quantity__button" type="button" data-quantity-step="-1">
+                      <svg class="icon quantity__icon" aria-hidden="true" focusable="false"><use href="#icon-minus"></use></svg>
+                      <span class="visually-hidden">Меньше</span>
+                    </button>
+                    <input
+                      class="quantity__input"
+                      type="text"
+                      inputmode="numeric"
+                      value="1"
+                      aria-label="Количество, шт."
+                      data-quantity-input
+                      data-min="1"
+                      data-max="99"
+                    />
+                    <button class="quantity__button" type="button" data-quantity-step="1">
+                      <svg class="icon quantity__icon" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg>
+                      <span class="visually-hidden">Больше</span>
+                    </button>
+                  </div>
+                  <span class="cart-summary__sum" data-item-sum></span>
+                  <button class="cart-summary__remove" type="button" data-item-remove>
+                    <svg class="icon cart-summary__remove-icon" aria-hidden="true" focusable="false"><use href="#icon-close"></use></svg>
+                    <span class="visually-hidden" data-item-remove-label>Удалить</span>
+                  </button>
+                </li>
+              </template>
+            </section>
           </form>
 
           <section class="product__about tabs" aria-label="Информация о товаре" data-tabs>
