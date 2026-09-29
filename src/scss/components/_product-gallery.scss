@@ -1,0 +1,67 @@
+@use '../abstracts' as *;
+
+.product-gallery {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+
+  // Вся картинка — кнопка, открывающая увеличенное фото.
+  &__trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+
+    &:focus-visible {
+      @include focus-ring(-4px);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  &__hint {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+  }
+
+  @media (hover: hover) {
+    &__trigger:hover &__image {
+      transform: scale(1.03);
+    }
+
+    &__trigger:hover &__hint {
+      background-color: var(--color-accent);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
+    // Клик по бейджу проходит к кнопке увеличения под ним.
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,33 @@
+// Дизайн-токены. Палитра и шрифты взяты с teaboom.ru.
+:root {
+  // Цвета
+  --color-text: #202020;
+  --color-text-muted: #606060;
+  --color-text-subtle: #6c757d;
+  --color-accent: #f5d730;
+  --color-accent-soft: #fefcef;
+  --color-surface: #fff;
+  --color-surface-muted: #f6f7f8;
+  --color-border: #e9ecef;
+  --color-border-strong: #cbcbcb;
+  --color-sale: #dc3545;
+  --color-success: #1e7e34;
+  --color-focus: #202020;
+
+  // Типографика
+  --font-base: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-accent: 'Oswald', 'Arial Narrow', sans-serif;
+
+  // Скругления
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  // Отступы контейнера
+  --gutter: 16px;
+
+  // Анимации
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+}

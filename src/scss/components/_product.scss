@@ -1,0 +1,91 @@
+@use '../abstracts' as *;
+
+// Раскладка карточки товара.
+//  mobile:  заголовок → фото → покупка → описание (одна колонка)
+//  tablet:  фото слева, заголовок и покупка справа, описание на всю ширину
+//  desktop: фото слева (липкое), вся информация справа
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'header'
+    'media'
+    'purchase'
+    'about';
+  gap: 20px;
+
+  @include media-up('md') {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas:
+      'media header'
+      'media purchase'
+      'about about';
+    grid-template-rows: auto 1fr auto;
+    gap: 24px 32px;
+  }
+
+  @include media-up('lg') {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'media header'
+      'media purchase'
+      'media about';
+    grid-template-rows: auto auto 1fr;
+    column-gap: 56px;
+  }
+
+  &__header {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__category {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  &__title {
+    font-family: var(--font-accent);
+    font-size: clamp(28px, 2.2vw + 20px, 42px);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+    margin-top: 4px;
+  }
+
+  &__media {
+    grid-area: media;
+
+    @include media-up('lg') {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+    }
+  }
+
+  &__purchase {
+    grid-area: purchase;
+    align-self: start;
+  }
+
+  &__about {
+    grid-area: about;
+  }
+}

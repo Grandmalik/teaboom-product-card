@@ -1,0 +1,67 @@
+@use '../abstracts' as *;
+
+// На мобильных показываем только ссылку на родительскую категорию («← Назад»),
+// на планшете и десктопе — всю цепочку.
+.breadcrumbs {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+
+  @include media-up('md') {
+    margin-bottom: 24px;
+    font-size: 12px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 4px;
+  }
+
+  &__item {
+    display: none;
+
+    &:nth-last-child(2) {
+      display: inline-flex;
+    }
+
+    @include media-up('md') {
+      display: inline-flex;
+      align-items: center;
+
+      // Разделитель в конце элемента: при переносе строки он не окажется в её начале.
+      &:not(:last-child)::after {
+        content: '';
+        width: 4px;
+        height: 1px;
+        margin-inline: 8px;
+        background-color: currentColor;
+      }
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-text);
+    }
+
+    // Стрелка «назад» — только в мобильном варианте.
+    @include media-down('md') {
+      &::before {
+        content: '←';
+      }
+    }
+  }
+
+  &__current {
+    color: var(--color-text);
+  }
+}

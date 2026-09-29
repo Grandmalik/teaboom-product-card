@@ -1,0 +1,38 @@
+.price {
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+  }
+
+  &__current {
+    font-family: var(--font-accent);
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  &__old {
+    font-size: 17px;
+    white-space: nowrap;
+    color: var(--color-text-subtle);
+  }
+
+  &__note {
+    margin-top: 2px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    transition:
+      opacity var(--transition-base),
+      visibility var(--transition-base);
+
+    // Скрыта, но место в раскладке сохраняется: блок цены не меняет высоту при смене фасовки.
+    &.is-invisible {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}

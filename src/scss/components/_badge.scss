@@ -1,0 +1,14 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  &--sale {
+    color: var(--color-surface);
+    background-color: var(--color-sale);
+  }
+}

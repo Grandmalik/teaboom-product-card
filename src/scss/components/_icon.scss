@@ -1,0 +1,11 @@
+// Базовый класс для линейных иконок из спрайта: цвет наследуется от текста.
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

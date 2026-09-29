@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.page {
+  padding-block: 16px 48px;
+
+  @include media-up('md') {
+    padding-block: 24px 64px;
+  }
+
+  @include media-up('lg') {
+    padding-block: 32px 96px;
+  }
+}

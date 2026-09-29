@@ -1,0 +1,29 @@
+// Точка входа стилей. Порядок: база → раскладка → компоненты → утилиты.
+// Абстракции (переменные, миксины) не генерируют CSS и подключаются в партиалах через @use.
+
+// Локальные шрифты временно отключены: сейчас подключаются с Google Fonts в index.html.
+// @use 'base/fonts';
+@use 'base/tokens';
+@use 'base/reset';
+@use 'base/typography';
+
+@use 'layout/container';
+@use 'layout/page';
+
+@use 'components/icon';
+@use 'components/badge';
+@use 'components/button';
+@use 'components/action';
+@use 'components/stock';
+@use 'components/breadcrumbs';
+@use 'components/product';
+@use 'components/product-gallery';
+@use 'components/purchase';
+@use 'components/variant-picker';
+@use 'components/price';
+@use 'components/product-about';
+@use 'components/specs';
+@use 'components/lightbox';
+
+@use 'utilities/visually-hidden';
+@use 'utilities/sprite';

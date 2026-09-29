@@ -1,0 +1,14 @@
+@use '../abstracts' as *;
+
+body {
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  @include focus-ring;
+}

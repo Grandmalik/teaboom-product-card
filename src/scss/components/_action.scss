@@ -1,0 +1,46 @@
+// Второстепенное действие «иконка + текст»: ссылка или кнопка без фона.
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  background: none;
+  transition: color var(--transition-fast);
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    transition:
+      color var(--transition-fast),
+      fill var(--transition-fast);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  // Товар в избранном: сердце залито и «пульсирует» один раз.
+  &--favorite[aria-pressed='true'] {
+    color: var(--color-text);
+  }
+
+  &--favorite[aria-pressed='true'] &__icon {
+    color: var(--color-sale);
+    fill: currentColor;
+    animation: action-pop 0.3s ease;
+  }
+}
+
+@keyframes action-pop {
+  50% {
+    transform: scale(1.25);
+  }
+}

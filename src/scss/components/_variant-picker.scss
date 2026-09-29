@@ -1,0 +1,81 @@
+@use '../abstracts' as *;
+
+// Выбор фасовки на нативных radio: клавиатура и скринридеры работают «из коробки».
+.variant-picker {
+  &__legend {
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+
+    @container purchase (min-width: 420px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__option {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+
+  &__input {
+    @include visually-hidden;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 8px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    text-align: center;
+    background-color: var(--color-surface-muted);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
+  }
+
+  &__weight {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  &__price {
+    font-size: 13px;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  // Состояния
+  @media (hover: hover) {
+    &__option:hover &__card {
+      border-color: var(--color-border-strong);
+    }
+  }
+
+  &__input:checked + &__card {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+  }
+
+  &__input:checked + &__card &__price {
+    color: var(--color-text);
+  }
+
+  &__input:focus-visible + &__card {
+    @include focus-ring;
+  }
+}

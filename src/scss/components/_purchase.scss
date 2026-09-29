@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+.purchase {
+  // Контейнер для container queries: сетка фасовок зависит от ширины блока, а не экрана.
+  container: purchase / inline-size;
+  display: grid;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  @include media-up('md') {
+    padding: 24px;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+  }
+
+  &__sku {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  &__sku-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text);
+  }
+
+  &__footer {
+    // Узкий блок: цена над кнопкой, кнопка на всю ширину.
+    // Широкий: у кнопки своя колонка фиксированной ширины, поэтому длина цены её не сдвигает.
+    display: grid;
+    align-items: center;
+    gap: 16px 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+
+    @container purchase (min-width: 480px) {
+      grid-template-columns: minmax(0, 1fr) 240px;
+    }
+  }
+}

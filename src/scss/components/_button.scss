@@ -1,0 +1,55 @@
+@use '../abstracts' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 28px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
+
+  &:focus-visible {
+    @include focus-ring(3px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  // Основная кнопка в фирменных цветах: жёлтая, при наведении — инверсия.
+  &--primary {
+    color: var(--color-text);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+
+    // Hover только для устройств с курсором — на тач-экранах состояние не «залипает».
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+        background-color: var(--color-text);
+        border-color: var(--color-text);
+      }
+    }
+
+    // Короткое подтверждение после добавления в корзину.
+    &.is-added {
+      color: var(--color-surface);
+      background-color: var(--color-success);
+      border-color: var(--color-success);
+    }
+  }
+}
