@@ -4,10 +4,16 @@ const TAB_SELECTOR = '[role="tab"]';
  * Вкладки по паттерну WAI-ARIA Tabs. Начальное состояние задано в разметке
  * (aria-selected у вкладки, is-active у панели), поэтому при загрузке ничего не перестраивается.
  * Клавиатура: стрелки влево/вправо переключают вкладки, Home/End — первая/последняя.
+ * Ссылка вида <a href="#id-панели"> в любом месте страницы открывает нужную вкладку,
+ * адрес с таким якорем открывает её сразу при загрузке.
  * @param {HTMLElement} root — элемент с атрибутом data-tabs
  */
 export function initTabs(root) {
   const tabs = [...root.querySelectorAll(TAB_SELECTOR)];
+
+  function getTabByPanelId(panelId) {
+    return tabs.find((tab) => tab.getAttribute('aria-controls') === panelId);
+  }
 
   function select(selectedTab) {
     tabs.forEach((tab) => {
@@ -49,4 +55,20 @@ export function initTabs(root) {
       nextTab.focus();
     }
   });
+
+  // Вкладка открывается до прокрутки к якорю, поэтому браузер прокручивает уже к видимой панели.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    const tab = link && getTabByPanelId(link.hash.slice(1));
+
+    if (tab) {
+      select(tab);
+    }
+  });
+
+  const initialTab = getTabByPanelId(window.location.hash.slice(1));
+
+  if (initialTab) {
+    select(initialTab);
+  }
 }

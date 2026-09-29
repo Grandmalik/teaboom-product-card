@@ -1,0 +1,32 @@
+// Пустое состояние раздела: иконка, заголовок и пояснение по центру.
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 16px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  background-color: var(--color-surface-muted);
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  &__title {
+    font-family: var(--font-accent);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  &__text {
+    max-width: 320px;
+    color: var(--color-text-muted);
+  }
+}

@@ -91,7 +91,7 @@
             <h1 class="product__title">Ананасовый улун</h1>
 
             <div class="product__actions">
-              <a class="action" href="https://teaboom.ru/product/ananasovij-ulun#reviews_for_product">
+              <a class="action" href="#product-panel-reviews">
                 <svg class="icon action__icon" aria-hidden="true" focusable="false"><use href="#icon-comment"></use></svg>
                 Оставить отзыв
               </a>
@@ -259,6 +259,17 @@
               >
                 Характеристики
               </button>
+              <button
+                class="tabs__tab"
+                type="button"
+                role="tab"
+                id="product-tab-reviews"
+                aria-controls="product-panel-reviews"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                Отзывы
+              </button>
             </div>
 
             <div class="tabs__panels">
@@ -378,6 +389,20 @@
                   >
                     Все характеристики
                   </button>
+                </div>
+              </div>
+
+              <div
+                class="tabs__panel"
+                role="tabpanel"
+                id="product-panel-reviews"
+                aria-labelledby="product-tab-reviews"
+                tabindex="0"
+              >
+                <div class="empty-state">
+                  <svg class="icon empty-state__icon" aria-hidden="true" focusable="false"><use href="#icon-comment"></use></svg>
+                  <p class="empty-state__title">Отзывов пока нет</p>
+                  <p class="empty-state__text">Будьте первым, кто поделится впечатлением об этом чае.</p>
                 </div>
               </div>
             </div>
