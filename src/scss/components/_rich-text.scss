@@ -1,0 +1,68 @@
+// Контент из визуального редактора движка: теги приходят без классов,
+// поэтому оформляются через контейнер. Любое описание товара выглядит единообразно.
+.rich-text {
+  color: var(--color-text-muted);
+
+  > * + * {
+    margin-top: 12px;
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin-bottom: 0;
+    font-family: var(--font-accent);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--color-text);
+  }
+
+  // Заголовок отделяет новый смысловой блок — отступ сверху больше.
+  > * + h2,
+  > * + h3,
+  > * + h4 {
+    margin-top: 24px;
+  }
+
+  ul {
+    display: grid;
+    gap: 6px;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: 20px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.65em;
+      left: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+    }
+  }
+
+  a {
+    color: var(--color-text);
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color var(--transition-fast);
+
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  strong,
+  b {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+}

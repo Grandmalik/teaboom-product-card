@@ -36,28 +36,6 @@
       <symbol id="icon-check" viewBox="0 0 24 24">
         <path d="M20 6 9 17l-5-5" />
       </symbol>
-      <symbol id="icon-thermometer" viewBox="0 0 24 24">
-        <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" />
-      </symbol>
-      <symbol id="icon-clock" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 6v6l4 2" />
-      </symbol>
-      <symbol id="icon-droplet" viewBox="0 0 24 24">
-        <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z" />
-      </symbol>
-      <symbol id="icon-pin" viewBox="0 0 24 24">
-        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-        <circle cx="12" cy="10" r="3" />
-      </symbol>
-      <symbol id="icon-leaf" viewBox="0 0 24 24">
-        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-      </symbol>
-      <symbol id="icon-bean" viewBox="0 0 24 24">
-        <path d="M10.165 6.598C9.954 7.478 9.64 8.36 9 9c-.64.64-1.521.954-2.402 1.165A6 6 0 0 0 8 22c7.732 0 14-6.268 14-14a6 6 0 0 0-11.835-1.402Z" />
-        <path d="M5.341 10.62a4 4 0 1 0 5.279-5.28" />
-      </symbol>
       <symbol id="icon-zoom" viewBox="0 0 24 24">
         <circle cx="11" cy="11" r="8" />
         <path d="m21 21-4.3-4.3M11 8v6M8 11h6" />
@@ -250,7 +228,7 @@
               </div>
 
               <button class="button button--primary" type="submit" data-add-to-cart>
-                <svg class="icon button__icon" aria-hidden="true" focusable="false">
+                <svg class="icon" aria-hidden="true" focusable="false">
                   <use href="#icon-cart" data-add-to-cart-icon></use>
                 </svg>
                 <span data-add-to-cart-label>В корзину</span>
@@ -258,69 +236,151 @@
             </div>
           </form>
 
-          <section class="product__about product-about" aria-labelledby="product-about-title">
-            <h2 class="product-about__title" id="product-about-title">О чае</h2>
-
-            <div class="product-about__text">
-              <p>
-                Светлый фуцзяньский улун с ароматом ананаса. В сухом виде — крупный лист изумрудного
-                цвета, скруткой напоминающий Те Гуань Инь. В прогретой посуде раскрывается аромат
-                свежей весенней зелени и спелого ананаса.
-              </p>
-              <p>
-                Настой прозрачный, светло-янтарного цвета: классическая нота светлого улуна
-                переплетается с яркой ананасовой.
-              </p>
-              <p class="product-about__composition">
-                <span class="product-about__label">Состав:</span>
-                китайский бирюзовый чай, цукаты, натуральные ароматические масла.
-              </p>
+          <section class="product__about tabs" aria-label="Информация о товаре" data-tabs>
+            <div class="tabs__list" role="tablist">
+              <button
+                class="tabs__tab"
+                type="button"
+                role="tab"
+                id="product-tab-description"
+                aria-controls="product-panel-description"
+                aria-selected="true"
+              >
+                Описание
+              </button>
+              <button
+                class="tabs__tab"
+                type="button"
+                role="tab"
+                id="product-tab-properties"
+                aria-controls="product-panel-properties"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                Характеристики
+              </button>
             </div>
 
-            <dl class="specs">
-              <div class="specs__item">
-                <dt class="specs__term">
-                  <svg class="icon specs__icon" aria-hidden="true" focusable="false"><use href="#icon-thermometer"></use></svg>
-                  Температура воды
-                </dt>
-                <dd class="specs__value">80–85 °C</dd>
+            <div class="tabs__panels">
+              <div
+                class="tabs__panel is-active"
+                role="tabpanel"
+                id="product-panel-description"
+                aria-labelledby="product-tab-description"
+                tabindex="0"
+              >
+                <div class="collapsible" data-collapsible>
+                  <!-- Описание товара из визуального редактора движка: HTML выводится как есть, без классов -->
+                  <div class="collapsible__content rich-text" id="product-description" data-collapsible-content>
+                    <p>
+                      Состав: китайский бирюзовый чай, цукаты, натуральные ароматические масла. Светлый
+                      Фуцзяньский улун с ароматом ананаса. В сухом виде &mdash; красивый крупный лист
+                      изумрудного цвета, скруткой листа напоминающий&nbsp;Те Гуань Инь. В прогретой посуде
+                      аромат свежей, весенней зелени и спелого ананаса. Скрученный лист медленно
+                      раскрывается, отдавая весь свой аромат. Тем, кому пришёлся по вкусу этот чай, может
+                      также понравиться&nbsp;<a href="https://teaboom.ru/product/svyazannij-chaj-ananasovyj-raj-100">связанный чай &laquo;Ананасовый рай&raquo;.</a>
+                    </p>
+                    <h3>Вкус</h3>
+                    <p>
+                      Настой прозрачный,&nbsp;светло-янтарного цвета. Классическая нота светлого
+                      фуцзяньского улуна переплетается c яркой ананасовой нотой.
+                    </p>
+                    <h3>Полезные свойства</h3>
+                    <ul>
+                      <li>отличный антиоксидант</li>
+                      <li>снижает уровень холестерина</li>
+                      <li>снижает лишний вес</li>
+                    </ul>
+                  </div>
+                  <button
+                    class="collapsible__toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="product-description"
+                    data-collapsible-toggle
+                    data-label-expanded="Свернуть"
+                  >
+                    Читать далее
+                  </button>
+                </div>
               </div>
-              <div class="specs__item">
-                <dt class="specs__term">
-                  <svg class="icon specs__icon" aria-hidden="true" focusable="false"><use href="#icon-clock"></use></svg>
-                  Время заваривания
-                </dt>
-                <dd class="specs__value">1–3 минуты</dd>
+
+              <div
+                class="tabs__panel"
+                role="tabpanel"
+                id="product-panel-properties"
+                aria-labelledby="product-tab-properties"
+                tabindex="0"
+              >
+                <div class="collapsible" data-collapsible>
+                  <!-- Характеристики из движка: список «название — значение», в шаблоне выводится циклом -->
+                  <dl class="collapsible__content properties" id="product-properties" data-collapsible-content>
+                    <div class="properties__row">
+                      <dt class="properties__name">Воздействие</dt>
+                      <dd class="properties__value">Сжигает жиры</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Время заваривания</dt>
+                      <dd class="properties__value">1-3 мин</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Категория</dt>
+                      <dd class="properties__value">Ароматизированный</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Количество</dt>
+                      <dd class="properties__value">2 ч.л.</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Кофеин</dt>
+                      <dd class="properties__value">Среднее содержание</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Объем</dt>
+                      <dd class="properties__value">500 мл</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Район происхождения</dt>
+                      <dd class="properties__value">Фуцзянь</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Страна произрастания</dt>
+                      <dd class="properties__value">Китай</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Температура воды</dt>
+                      <dd class="properties__value">80-85 °</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Упаковка</dt>
+                      <dd class="properties__value">Бумажная с фольгой</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Фасовка</dt>
+                      <dd class="properties__value">100 г, 1000 г, 500 г, 5000 г</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Форма листа</dt>
+                      <dd class="properties__value">крупные и плотно скрученные листочки</dd>
+                    </div>
+                    <div class="properties__row">
+                      <dt class="properties__name">Хранение</dt>
+                      <dd class="properties__value">В холодильнике</dd>
+                    </div>
+                  </dl>
+                  <button
+                    class="collapsible__toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="product-properties"
+                    data-collapsible-toggle
+                    data-label-expanded="Свернуть"
+                  >
+                    Все характеристики
+                  </button>
+                </div>
               </div>
-              <div class="specs__item">
-                <dt class="specs__term">
-                  <svg class="icon specs__icon" aria-hidden="true" focusable="false"><use href="#icon-droplet"></use></svg>
-                  Порция
-                </dt>
-                <dd class="specs__value">2 ч.л. на 500 мл</dd>
-              </div>
-              <div class="specs__item">
-                <dt class="specs__term">
-                  <svg class="icon specs__icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
-                  Регион
-                </dt>
-                <dd class="specs__value">Фуцзянь, Китай</dd>
-              </div>
-              <div class="specs__item">
-                <dt class="specs__term">
-                  <svg class="icon specs__icon" aria-hidden="true" focusable="false"><use href="#icon-leaf"></use></svg>
-                  Лист
-                </dt>
-                <dd class="specs__value">Крупный, плотно скрученный</dd>
-              </div>
-              <div class="specs__item">
-                <dt class="specs__term">
-                  <svg class="icon specs__icon" aria-hidden="true" focusable="false"><use href="#icon-bean"></use></svg>
-                  Кофеин
-                </dt>
-                <dd class="specs__value">Среднее содержание</dd>
-              </div>
-            </dl>
+            </div>
           </section>
         </article>
       </div>

@@ -1,0 +1,39 @@
+// Сворачиваемый блок: длинный контент обрезается по высоте с плавным затуханием
+// и раскрывается кнопкой. Короткий контент (помещается целиком) показывается как есть.
+.collapsible {
+  --collapsible-height: 280px;
+  --collapsible-fade: 64px;
+
+  &__content {
+    max-height: var(--collapsible-height);
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--collapsible-fade)), transparent);
+  }
+
+  &.is-expanded &__content,
+  &.is-static &__content {
+    max-height: none;
+    mask-image: none;
+  }
+
+  &__toggle {
+    margin-top: 12px;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    background: none;
+    transition: text-decoration-color var(--transition-fast);
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-color: currentColor;
+      }
+    }
+  }
+}

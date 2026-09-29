@@ -21,8 +21,10 @@
 @use 'components/purchase';
 @use 'components/variant-picker';
 @use 'components/price';
-@use 'components/product-about';
-@use 'components/specs';
+@use 'components/tabs';
+@use 'components/rich-text';
+@use 'components/properties';
+@use 'components/collapsible';
 @use 'components/lightbox';
 
 @use 'utilities/visually-hidden';
